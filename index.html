@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin Panel | ChartJS</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/_all-skins.min.css">
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <div>
+        <section class="content">
+          <div class="row">
+            <div class="col-md-6">
+             
+
+              <!-- DONUT CHART -->
+              <div class="box">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Pie Chart</h3>
+                  <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                  </div>
+                </div>
+                <div class="box-body">
+                    <canvas id="pieChart" style="height:250px"></canvas>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+
+            </div><!-- /.col (LEFT) -->
+            
+          </div><!-- /.row -->
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      
+    </div><!-- ./wrapper -->
+
+    <!-- jQuery 2.1.4 -->
+    <script src="js/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- ChartJS 1.0.1 -->
+    <script src="js/Chart.min.js"></script>
+    <!-- FastClick -->
+    <script src="js/fastclick.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="js/app.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="js/demo.js"></script>
+    <!-- page script -->
+    <script>
+      $(function () {
+        
+
+        //-------------
+        //- PIE CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
+        var pieChart = new Chart(pieChartCanvas);
+        var PieData = [
+          {
+            value: 700,
+            color: "#f56954",
+            highlight: "#f56954",
+            label: "Jagmohan"
+          },
+          {
+            value: 500,
+            color: "#00a65a",
+            highlight: "#00a65a",
+            label: "Faiz"
+
+          },
+          {
+            value: 400,
+            color: "#f39c12",
+            highlight: "#f39c12",
+            label: "Akram"
+          },
+          {
+            value: 600,
+            color: "#00c0ef",
+            highlight: "#00c0ef",
+            label: "Singh"
+          },
+          {
+            value: 300,
+            color: "#3c8dbc",
+            highlight: "#3c8dbc",
+            label: "Navdeep"
+          },
+          {
+            value: 100,
+            color: "#d2d6de",
+            highlight: "#d2d6de",
+            label: "Parween"
+          }
+        ];
+        var pieOptions = {
+          //Boolean - Whether we should show a stroke on each segment
+          segmentShowStroke: true,
+          //String - The colour of each segment stroke
+          segmentStrokeColor: "#fff",
+          //Number - The width of each segment stroke
+          segmentStrokeWidth: 2,
+          //Number - The percentage of the chart that we cut out of the middle
+          percentageInnerCutout: 50, // This is 0 for Pie charts
+          //Number - Amount of animation steps
+          animationSteps: 100,
+          //String - Animation easing effect
+          animationEasing: "easeOutBounce",
+          //Boolean - Whether we animate the rotation of the Doughnut
+          animateRotate: true,
+          //Boolean - Whether we animate scaling the Doughnut from the centre
+          animateScale: false,
+          //Boolean - whether to make the chart responsive to window resizing
+          responsive: true,
+          // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+          maintainAspectRatio: true,
+          //String - A legend template
+          legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
+        };
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        pieChart.Doughnut(PieData, pieOptions);
+
+        
+      });
+    </script>
+  </body>
+</html>
